@@ -1,4 +1,5 @@
 import 'package:coin_switch/currency.dart';
+import 'package:coin_switch/slide_carousel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -44,17 +45,17 @@ class _HomePageState extends State<HomePage> {
         percent: 26.1,
         icon: Icons.bathtub));
     currencyList.add(Currency(
-        name: "Dogecoin",
-        shortName: "DOGE",
-        price: 59,
-        percent: 26.1,
-        icon: Icons.bathtub));
+        name: "IOST",
+        shortName: "IOST",
+        price: 3.01,
+        percent: 22.1,
+        icon: Icons.location_searching_outlined));
     currencyList.add(Currency(
-        name: "Dogecoin",
-        shortName: "DOGE",
-        price: 59,
-        percent: 26.1,
-        icon: Icons.bathtub));
+        name: "Ripple",
+        shortName: "XRP",
+        price: 86.24,
+        percent: -7.5,
+        icon: Icons.radio));
   }
 
   @override
@@ -149,12 +150,7 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0),
       child: Container(
         height: MediaQuery.of(context).size.height * 0.18,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: AssetImage('image/coinswitch.jpeg'),
-            ),
-            borderRadius: BorderRadius.circular(4)),
+        child: Carousel(),
       ),
     );
   }

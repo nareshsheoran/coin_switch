@@ -33,6 +33,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   motion_tab_bar: ^0.1.5
+  carousel_slider: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -47,7 +48,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - image/coinswitch.jpeg
+      - image/cs6.jpeg
+      - image/cs1.jpeg
+      - image/cs2.jpeg
+      - image/cs3.jpeg
+      - image/cs4.jpeg
+      - image/cs5.jpeg
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
