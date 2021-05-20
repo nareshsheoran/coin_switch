@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,20 +25,19 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Coin Switch'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0),
-        child: Column(
-          children: [
+        appBar: AppBar(
+          title: Text('Coin Switch'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0),
+          child: Column(children: [
             Container(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0),
+                padding: const EdgeInsets.fromLTRB(8.0, 4.0, 0.0, 0),
                 child: Text(
                   'Total Worth',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 18.0),
                 ),
               ),
             ),
@@ -62,14 +62,15 @@ class Homepage extends StatelessWidget {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(8.0),
                   child: RaisedButton(
                     color: Colors.blue,
                     onPressed: () {},
                     child: Text(
-                      'BUY BITCOIN',
+                      '₿  BUY BITCOIN',
                       style: TextStyle(),
                     ),
                   ),
@@ -78,7 +79,7 @@ class Homepage extends StatelessWidget {
                   padding: EdgeInsets.all(16.0),
                   child: RaisedButton(
                     onPressed: () {},
-                    child: Text('Deposit INR'),
+                    child: Text('      Deposit INR      '),
                   ),
                 )
               ],
@@ -94,12 +95,8 @@ class Homepage extends StatelessWidget {
                 )),
               ),
             ),
-            SizedBox(
-              height: 10,
-              width: 10,
-            ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
                   Container(
@@ -113,26 +110,62 @@ class Homepage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-              width: 10,
-            ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: 15,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                        leading: Icon(Icons.list),
-                        trailing: Text(
-                          "ABC",
-                          style: TextStyle(color: Colors.green, fontSize: 15),
-                        ),
-                        title: Text("Name"));
-                  }),
+              child: ListView(children: [
+                buildColumn('Bitcoin', 'BTC', '₹33,48,832.15', '-3.12%'),
+                buildColumn('Ethereum', 'ETH', '₹2,24,237.53', '-1.9%'),
+                buildColumn('DogeCoin', 'DOGE', '₹32.687241', '+2.2%'),
+                buildColumn('VeChain', 'VET', '₹10.25', '+2.66%'),
+                buildColumn('IOST', 'IOST', '₹2.87', '-7.14%'),
+                buildColumn('DigiByte', 'DGB', '₹7.48', '+11.33%'),
+                buildColumn('Tron', 'TRX', '₹7.159013', '-12.17%'),
+              ]),
             )
-          ],
-        ),
-      ),
+          ]),
+        ));
+  }
+
+  Column buildColumn(
+      String currency, String name, String rate, String percent) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            color: Colors.grey,
+            child: Row(
+              children: [
+                Icon(Icons.info_outline),
+                SizedBox(
+                  width: 8,
+                ),
+                Column(
+                  children: [
+                    Text(
+                      currency,
+                      style: TextStyle(fontSize: 24.0),
+                    ),
+                    Text(name)
+                  ],
+                ),
+                Expanded(child: Container()),
+                Column(
+                  children: [
+                    Text(
+                      rate,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      percent,
+                      style: TextStyle(fontSize: 14),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
 }
